@@ -1,0 +1,191 @@
+﻿@model MvcApp.Models.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.Header = "Customer";
+}
+@if(ViewBag.RoleName=="Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if(ViewBag.RoleName=="Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Customer</legend>
+
+        @Html.HiddenFor(model => model.customerId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.userId, "User")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("userId", String.Empty)
+            @Html.ValidationMessageFor(model => model.userId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.alphabeticId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.alphabeticId)
+            @Html.ValidationMessageFor(model => model.alphabeticId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerGroupId, "CustomerGroup")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("customerGroupId", String.Empty)
+            @Html.ValidationMessageFor(model => model.customerGroupId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.customerName)
+            @Html.ValidationMessageFor(model => model.customerName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StreetAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StreetAddress)
+            @Html.ValidationMessageFor(model => model.StreetAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZipCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ZipCode)
+            @Html.ValidationMessageFor(model => model.ZipCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.country)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.country)
+            @Html.ValidationMessageFor(model => model.country)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ispostaladdsame)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ispostaladdsame)
+            @Html.ValidationMessageFor(model => model.ispostaladdsame)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postalStreetAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.postalStreetAddress)
+            @Html.ValidationMessageFor(model => model.postalStreetAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postalZipCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.postalZipCode)
+            @Html.ValidationMessageFor(model => model.postalZipCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postalcity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.postalcity)
+            @Html.ValidationMessageFor(model => model.postalcity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contactpersonName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contactpersonName)
+            @Html.ValidationMessageFor(model => model.contactpersonName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.emailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.emailAddress)
+            @Html.ValidationMessageFor(model => model.emailAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.title)
+            @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneNumber)
+            @Html.ValidationMessageFor(model => model.phoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.creditLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.creditLimit)
+            @Html.ValidationMessageFor(model => model.creditLimit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.discountRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.discountRate)
+            @Html.ValidationMessageFor(model => model.discountRate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createcustomersite)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.createcustomersite)
+            @Html.ValidationMessageFor(model => model.createcustomersite)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

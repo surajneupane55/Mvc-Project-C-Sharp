@@ -1,0 +1,184 @@
+﻿@model MvcApp.Models.DetailView
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "User";
+
+ 
+    
+}
+@if (ViewBag.CurrentRole == "Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if (ViewBag.CurrentRole == "Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+<div class="container1" style="width: 660px;float:right;">
+<h2>Details</h2>
+
+<fieldset>
+    <h2>User</h2>
+    <table class="table table-bordered">
+
+
+
+    @if (ViewBag.rolename == "admin")
+    {
+          <table class="table table-bordered">
+               <tr><td>
+
+        <div class="display-label">
+          <h4>  @Html.DisplayNameFor(model => model.User.userId)</h4>
+        </div>
+                    </td></tr>
+              <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.User.userId)
+        </div> </td></tr>
+                    <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.User.userName)</h4>
+        </div> </td></tr>
+                         <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.User.userName)
+        </div> </td></tr>
+                              <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.Admin.adminId)</h4>
+        </div>
+                                   <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Admin.adminId)
+        </div> </td></tr>
+                                        <tr><td>
+
+        <div class="display-label">
+            <h4> @Html.DisplayNameFor(model => model.Admin.Name)</h4>
+        </div> </td></tr>
+                                             <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Admin.Name)
+        </div> </td></tr>
+                                                  <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.Admin.surName)</h4>
+        </div> </td></tr>
+                                                       <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Admin.surName)
+        </div>  </td></tr>
+              </table>   
+    }
+
+    else if (ViewBag.rolename == "emp")
+    {
+        <table class="table table-bordered">
+               <tr><td>
+            
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.User.userId)</h4>
+        </div> </td></tr> <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.User.userId)
+        </div> </td></tr> <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.User.userName)</h4>
+        </div> </td></tr> <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.User.userName)
+        </div> </td></tr> <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.Employee.employeeId)</h4>
+        </div> </td></tr> <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.employeeId)
+        </div> </td></tr> <tr><td>
+
+        <div class="display-label">
+            <h4> @Html.DisplayNameFor(model => model.Employee.Name)</h4>
+        </div> </td></tr> <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.Name)
+        </div> </td></tr> <tr><td>
+
+        <div class="display-label">
+           <h4>  @Html.DisplayNameFor(model => model.Employee.surName)</h4>
+        </div> </td></tr> <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Employee.surName)
+        </div> </td></tr></table>
+               
+    }
+    else if (ViewBag.rolename == "customer")
+    {
+                   <table class="table table-bordered">
+               <tr><td>
+
+        <div class="display-label">
+            <h4> @Html.DisplayNameFor(model => model.Customer.userId)</h4>
+        </div> </td></tr>
+                   <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Customer.userId)
+        </div> </td></tr>
+                       <tr><td>
+
+   
+
+        <div class="display-label">
+             <h4>@Html.DisplayNameFor(model => model.Customer.customerId)</h4>
+        </div> </td></tr>
+                           <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Customer.customerId)
+        </div> </td></tr>
+                               <tr><td>
+        <div class="display-label">
+          <h4>  @Html.DisplayNameFor(model => model.Customer.customerName)</h4>
+        </div> </td></tr>
+                                   <tr><td>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Customer.customerName)
+        </div>
+                                      </td></tr></table>
+    }
+</fieldset>
+<p>
+     @if(Model.User.Role.roleName=="Admin")
+   {
+           @Html.ActionLink("Edit", "Edit",new { id = Model.User.userId })
+   }
+    
+    |
+   @if(ViewBag.CurrentRole=="Employee")
+   {
+        @Html.ActionLink("Back to List", "Index","Employee")
+   }
+    else if(ViewBag.CurrentRole=="Customer")
+    {
+        @Html.ActionLink("Back to List", "Index","CustomerSite")
+   }
+    else if(ViewBag.CurrentRole=="Admin")
+    {
+        @Html.ActionLink("Back to List", "Index","Admin")
+   }
+    else
+    {
+       
+        @Html.ActionLink("Back to List", "Index")
+  
+    }
+</p>
+    </div>

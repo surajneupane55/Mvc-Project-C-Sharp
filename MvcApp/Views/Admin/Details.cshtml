@@ -1,0 +1,56 @@
+﻿@model MvcApp.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Admin";
+}
+  <div>
+       @Html.Partial("_adminsidebar")
+</div>
+
+
+  
+<div class="container" style="width: 800px;float:right;">
+<h2>Details</h2>
+
+<fieldset>
+
+    <legend>Admin</legend>
+    <table class="table table-bordered">
+        <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.userName)
+    </div>
+            </td></tr>
+        <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.userName)
+    </div>
+            </td></tr>
+        <tr><td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div> </td></tr>
+             <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div></td></tr>
+         <tr><td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.surName)
+    </div></td></tr>
+         <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.surName)
+    </div>
+             </td></tr>
+        
+</fieldset>
+     <tr><td>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.userId}) |
+    @Html.ActionLink("Back to List", "Index")</td></tr>
+    </table>
+    </div>
+

@@ -1,0 +1,26 @@
+﻿@model MvcApp.Models.PaymentDisruption
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>PaymentDisruption</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paymentDisruptionType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paymentDisruptionType)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

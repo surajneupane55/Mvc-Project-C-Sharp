@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="lpDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="lpDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="lpDBModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="lpDBModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerGroup" EntityType="lpDBModel.Store.CustomerGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerSite" EntityType="lpDBModel.Store.CustomerSite" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="lpDBModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentDisruption" EntityType="lpDBModel.Store.PaymentDisruption" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="lpDBModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="lpDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WayOfDelivery" EntityType="lpDBModel.Store.WayOfDelivery" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Admin_User" Association="lpDBModel.Store.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerGroup" Association="lpDBModel.Store.FK_Customer_CustomerGroup">
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="lpDBModel.Store.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_Customer" Association="lpDBModel.Store.FK_CustomerSite_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_PaymentDisruption" Association="lpDBModel.Store.FK_CustomerSite_PaymentDisruption">
+            <End Role="PaymentDisruption" EntitySet="PaymentDisruption" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_WayOfDelivery" Association="lpDBModel.Store.FK_CustomerSite_WayOfDelivery">
+            <End Role="WayOfDelivery" EntitySet="WayOfDelivery" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="lpDBModel.Store.FK_Employee_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="lpDBModel.Store.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminId" />
+          </Key>
+          <Property Name="adminId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="customerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="alphabeticId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="customerGroupId" Type="int" Nullable="false" />
+          <Property Name="customerName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ZipCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="country" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ispostaladdsame" Type="bit" />
+          <Property Name="postalStreetAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="postalZipCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="postalcity" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="contactpersonName" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="emailAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="title" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="phoneNumber" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="creditLimit" Type="int" Nullable="false" />
+          <Property Name="discountRate" Type="decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="createcustomersite" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerGroup">
+          <Key>
+            <PropertyRef Name="customerGroupId" />
+          </Key>
+          <Property Name="customerGroupId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="groupName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="groupDescription" Type="varchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="CustomerSite">
+          <Key>
+            <PropertyRef Name="customerSiteId" />
+          </Key>
+          <Property Name="customerSiteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="alphabeticId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="siteName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="dateOfLastSale" Type="datetime" />
+          <Property Name="salesAmount" Type="int" Nullable="false" />
+          <Property Name="wayOfDeliveryId" Type="int" Nullable="false" />
+          <Property Name="markOfDeletion" Type="bit" />
+          <Property Name="paymentDisruptionId" Type="int" Nullable="false" />
+          <Property Name="sales" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employeeId" />
+          </Key>
+          <Property Name="employeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="surName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentDisruption">
+          <Key>
+            <PropertyRef Name="paymentDisruptionId" />
+          </Key>
+          <Property Name="paymentDisruptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="paymentDisruptionType" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleId" />
+          </Key>
+          <Property Name="roleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="roleName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="roleId" Type="int" Nullable="false" />
+          <Property Name="userName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="passWord" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WayOfDelivery">
+          <Key>
+            <PropertyRef Name="wayOfDeliveryId" />
+          </Key>
+          <Property Name="wayOfDeliveryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryText" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="lpDBModel.Store.User" Multiplicity="1" />
+          <End Role="Admin" Type="lpDBModel.Store.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerGroup">
+          <End Role="CustomerGroup" Type="lpDBModel.Store.CustomerGroup" Multiplicity="1" />
+          <End Role="Customer" Type="lpDBModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGroup">
+              <PropertyRef Name="customerGroupId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="lpDBModel.Store.User" Multiplicity="1" />
+          <End Role="Customer" Type="lpDBModel.Store.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_Customer">
+          <End Role="Customer" Type="lpDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.Store.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_PaymentDisruption">
+          <End Role="PaymentDisruption" Type="lpDBModel.Store.PaymentDisruption" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.Store.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDisruption">
+              <PropertyRef Name="paymentDisruptionId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="paymentDisruptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_WayOfDelivery">
+          <End Role="WayOfDelivery" Type="lpDBModel.Store.WayOfDelivery" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.Store.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WayOfDelivery">
+              <PropertyRef Name="wayOfDeliveryId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="wayOfDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="lpDBModel.Store.User" Multiplicity="1" />
+          <End Role="Employee" Type="lpDBModel.Store.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="lpDBModel.Store.Role" Multiplicity="1" />
+          <End Role="User" Type="lpDBModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="roleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lpDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="lpDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="lpDBModel.Admin" />
+          <EntitySet Name="Customer" EntityType="lpDBModel.Customer" />
+          <EntitySet Name="CustomerGroup" EntityType="lpDBModel.CustomerGroup" />
+          <EntitySet Name="CustomerSite" EntityType="lpDBModel.CustomerSite" />
+          <EntitySet Name="Employee" EntityType="lpDBModel.Employee" />
+          <EntitySet Name="PaymentDisruption" EntityType="lpDBModel.PaymentDisruption" />
+          <EntitySet Name="Role" EntityType="lpDBModel.Role" />
+          <EntitySet Name="User" EntityType="lpDBModel.User" />
+          <EntitySet Name="WayOfDelivery" EntityType="lpDBModel.WayOfDelivery" />
+          <AssociationSet Name="FK_Admin_User" Association="lpDBModel.FK_Admin_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerGroup" Association="lpDBModel.FK_Customer_CustomerGroup">
+            <End Role="CustomerGroup" EntitySet="CustomerGroup" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="lpDBModel.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_Customer" Association="lpDBModel.FK_CustomerSite_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_PaymentDisruption" Association="lpDBModel.FK_CustomerSite_PaymentDisruption">
+            <End Role="PaymentDisruption" EntitySet="PaymentDisruption" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerSite_WayOfDelivery" Association="lpDBModel.FK_CustomerSite_WayOfDelivery">
+            <End Role="WayOfDelivery" EntitySet="WayOfDelivery" />
+            <End Role="CustomerSite" EntitySet="CustomerSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="lpDBModel.FK_Employee_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="lpDBModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="adminId" />
+          </Key>
+          <Property Name="adminId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="lpDBModel.FK_Admin_User" FromRole="Admin" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="customerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="alphabeticId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="customerGroupId" Type="Int32" Nullable="false" />
+          <Property Name="customerName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ispostaladdsame" Type="Boolean" />
+          <Property Name="postalStreetAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="postalZipCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="postalcity" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="contactpersonName" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="phoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="creditLimit" Type="Int32" Nullable="false" />
+          <Property Name="discountRate" Type="Decimal" Nullable="false" Precision="3" Scale="1" />
+          <Property Name="createcustomersite" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CustomerGroup" Relationship="lpDBModel.FK_Customer_CustomerGroup" FromRole="Customer" ToRole="CustomerGroup" />
+          <NavigationProperty Name="User" Relationship="lpDBModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="CustomerSite" Relationship="lpDBModel.FK_CustomerSite_Customer" FromRole="Customer" ToRole="CustomerSite" />
+        </EntityType>
+        <EntityType Name="CustomerGroup">
+          <Key>
+            <PropertyRef Name="customerGroupId" />
+          </Key>
+          <Property Name="customerGroupId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="groupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="groupDescription" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="lpDBModel.FK_Customer_CustomerGroup" FromRole="CustomerGroup" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CustomerSite">
+          <Key>
+            <PropertyRef Name="customerSiteId" />
+          </Key>
+          <Property Name="customerSiteId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="customerId" Type="Int32" Nullable="false" />
+          <Property Name="alphabeticId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="siteName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="dateOfLastSale" Type="DateTime" Precision="3" />
+          <Property Name="salesAmount" Type="Int32" Nullable="false" />
+          <Property Name="wayOfDeliveryId" Type="Int32" Nullable="false" />
+          <Property Name="markOfDeletion" Type="Boolean" />
+          <Property Name="paymentDisruptionId" Type="Int32" Nullable="false" />
+          <Property Name="sales" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="lpDBModel.FK_CustomerSite_Customer" FromRole="CustomerSite" ToRole="Customer" />
+          <NavigationProperty Name="PaymentDisruption" Relationship="lpDBModel.FK_CustomerSite_PaymentDisruption" FromRole="CustomerSite" ToRole="PaymentDisruption" />
+          <NavigationProperty Name="WayOfDelivery" Relationship="lpDBModel.FK_CustomerSite_WayOfDelivery" FromRole="CustomerSite" ToRole="WayOfDelivery" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employeeId" />
+          </Key>
+          <Property Name="employeeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="surName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="lpDBModel.FK_Employee_User" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PaymentDisruption">
+          <Key>
+            <PropertyRef Name="paymentDisruptionId" />
+          </Key>
+          <Property Name="paymentDisruptionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentDisruptionType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CustomerSite" Relationship="lpDBModel.FK_CustomerSite_PaymentDisruption" FromRole="PaymentDisruption" ToRole="CustomerSite" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleId" />
+          </Key>
+          <Property Name="roleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="lpDBModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="passWord" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Admin" Relationship="lpDBModel.FK_Admin_User" FromRole="User" ToRole="Admin" />
+          <NavigationProperty Name="Customer" Relationship="lpDBModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="lpDBModel.FK_Employee_User" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Role" Relationship="lpDBModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="WayOfDelivery">
+          <Key>
+            <PropertyRef Name="wayOfDeliveryId" />
+          </Key>
+          <Property Name="wayOfDeliveryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryText" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CustomerSite" Relationship="lpDBModel.FK_CustomerSite_WayOfDelivery" FromRole="WayOfDelivery" ToRole="CustomerSite" />
+        </EntityType>
+        <Association Name="FK_Admin_User">
+          <End Role="User" Type="lpDBModel.User" Multiplicity="1" />
+          <End Role="Admin" Type="lpDBModel.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerGroup">
+          <End Role="CustomerGroup" Type="lpDBModel.CustomerGroup" Multiplicity="1" />
+          <End Role="Customer" Type="lpDBModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGroup">
+              <PropertyRef Name="customerGroupId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="lpDBModel.User" Multiplicity="1" />
+          <End Role="Customer" Type="lpDBModel.Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_Customer">
+          <End Role="Customer" Type="lpDBModel.Customer" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_PaymentDisruption">
+          <End Role="PaymentDisruption" Type="lpDBModel.PaymentDisruption" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDisruption">
+              <PropertyRef Name="paymentDisruptionId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="paymentDisruptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerSite_WayOfDelivery">
+          <End Role="WayOfDelivery" Type="lpDBModel.WayOfDelivery" Multiplicity="1" />
+          <End Role="CustomerSite" Type="lpDBModel.CustomerSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WayOfDelivery">
+              <PropertyRef Name="wayOfDeliveryId" />
+            </Principal>
+            <Dependent Role="CustomerSite">
+              <PropertyRef Name="wayOfDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="lpDBModel.User" Multiplicity="1" />
+          <End Role="Employee" Type="lpDBModel.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="lpDBModel.Role" Multiplicity="1" />
+          <End Role="User" Type="lpDBModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="roleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lpDBModelStoreContainer" CdmEntityContainer="lpDBEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="lpDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="adminId" ColumnName="adminId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="surName" ColumnName="surName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="lpDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="alphabeticId" ColumnName="alphabeticId" />
+                <ScalarProperty Name="customerGroupId" ColumnName="customerGroupId" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="ispostaladdsame" ColumnName="ispostaladdsame" />
+                <ScalarProperty Name="postalStreetAddress" ColumnName="postalStreetAddress" />
+                <ScalarProperty Name="postalZipCode" ColumnName="postalZipCode" />
+                <ScalarProperty Name="postalcity" ColumnName="postalcity" />
+                <ScalarProperty Name="contactpersonName" ColumnName="contactpersonName" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="creditLimit" ColumnName="creditLimit" />
+                <ScalarProperty Name="discountRate" ColumnName="discountRate" />
+                <ScalarProperty Name="createcustomersite" ColumnName="createcustomersite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerGroup">
+            <EntityTypeMapping TypeName="lpDBModel.CustomerGroup">
+              <MappingFragment StoreEntitySet="CustomerGroup">
+                <ScalarProperty Name="customerGroupId" ColumnName="customerGroupId" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+                <ScalarProperty Name="groupDescription" ColumnName="groupDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerSite">
+            <EntityTypeMapping TypeName="lpDBModel.CustomerSite">
+              <MappingFragment StoreEntitySet="CustomerSite">
+                <ScalarProperty Name="customerSiteId" ColumnName="customerSiteId" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="alphabeticId" ColumnName="alphabeticId" />
+                <ScalarProperty Name="siteName" ColumnName="siteName" />
+                <ScalarProperty Name="dateOfLastSale" ColumnName="dateOfLastSale" />
+                <ScalarProperty Name="salesAmount" ColumnName="salesAmount" />
+                <ScalarProperty Name="wayOfDeliveryId" ColumnName="wayOfDeliveryId" />
+                <ScalarProperty Name="markOfDeletion" ColumnName="markOfDeletion" />
+                <ScalarProperty Name="paymentDisruptionId" ColumnName="paymentDisruptionId" />
+                <ScalarProperty Name="sales" ColumnName="sales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="lpDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="surName" ColumnName="surName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDisruption">
+            <EntityTypeMapping TypeName="lpDBModel.PaymentDisruption">
+              <MappingFragment StoreEntitySet="PaymentDisruption">
+                <ScalarProperty Name="paymentDisruptionId" ColumnName="paymentDisruptionId" />
+                <ScalarProperty Name="paymentDisruptionType" ColumnName="paymentDisruptionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="lpDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="lpDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="passWord" ColumnName="passWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WayOfDelivery">
+            <EntityTypeMapping TypeName="lpDBModel.WayOfDelivery">
+              <MappingFragment StoreEntitySet="WayOfDelivery">
+                <ScalarProperty Name="wayOfDeliveryId" ColumnName="wayOfDeliveryId" />
+                <ScalarProperty Name="deliveryText" ColumnName="deliveryText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

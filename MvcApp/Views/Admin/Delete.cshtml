@@ -1,0 +1,55 @@
+﻿@model MvcApp.Models.Admin
+
+@{
+    ViewBag.Title = "Delete";
+    ViewBag.Header = "Admin";
+}
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+<div class="container" style="width: 800px;float:right;">
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+   
+<fieldset> <table class="table table-bordered">
+    <tr><td>
+    <h3>Admin</h3>
+    </td></tr>
+    <tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.userName)
+    </div></td></tr>
+        <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.userName)
+    </div></td></tr>
+            <tr><td>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div></td></tr>
+                <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div></td></tr>
+<tr><td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.surName)
+    </div></td></tr>
+    <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.surName)
+    </div></td></tr>
+    </table>
+    </fieldset>
+
+@using (Html.BeginForm()) {
+  
+        <p><input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")</p>
+   
+}
+     </div>
+

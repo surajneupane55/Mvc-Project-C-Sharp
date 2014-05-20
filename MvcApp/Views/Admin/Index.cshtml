@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MvcApp.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Header = "Admin";
+}
+   
+
+
+@if(ViewBag.RoleName=="Admin")
+{
+        <div>
+       @Html.Partial("_adminsidebar")
+      </div>
+}
+
+    else if (ViewBag.RoleName == "Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+
+
+
+  
+<div class="container1" style="width: 660px;float:right;">
+ 
+     <h2>Welcome Page for Admin</h2>
+    <table class="table table-bordered">
+        <tr><th> As admin you can:</th></tr>
+        <tr>
+           <tr>  <td> CURD all the User of the system</td> </tr>
+           <tr>   <td> CRUD all the Employee</td> </tr>
+         <tr>    <td>CRUD all the Customer</td> </tr>
+         <tr>    <td>CRUD your own details</td> </tr>
+                    
+
+  
+</table>
+ <table class="table table-bordered" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.surName)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.adminId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.adminId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.adminId })
+        </td>
+    </tr>
+}
+
+</table>
+       
+      </div>
+    

@@ -1,0 +1,79 @@
+﻿@model MvcApp.Models.User
+
+@{
+    ViewBag.Title = "LogIn";
+    ViewBag.header = "LogIn";
+}
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="hero-unit" style="width: 800px; height: 400px">
+            <div style="width: 700px; margin-left: auto; margin-right: auto">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td>@Html.LabelFor(m => m.userName)
+                        </td>
+
+                        <td>
+                            @Html.TextBoxFor(m => m.userName)
+                            @Html.ValidationMessageFor(m => m.userName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.passWord)
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.passWord)
+                            @Html.ValidationMessageFor(m => m.passWord)
+                        </td>
+                    </tr>
+
+                </table>
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+
+                        <p class="span3 offset3">
+                            
+                        </p>
+
+
+
+                    </tr>
+                </table>
+
+                <p class="span3 offset3">
+                    <input class="btn btn-primary" type="submit" value="Enter" />
+                </p>
+    
+                @if (ViewBag.errorMsg != null)
+                  {
+                    
+                         <p class="error-message-on-logIn"> <br><br><br>
+                            @ViewBag.errorMsg
+                     </p>
+                   }
+                       
+                
+            </div>
+        </div>
+
+    </fieldset>
+@*<p>
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>*@
+
+}
+
+@*<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

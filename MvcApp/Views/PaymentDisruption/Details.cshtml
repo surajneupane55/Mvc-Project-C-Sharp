@@ -1,0 +1,22 @@
+﻿@model MvcApp.Models.PaymentDisruption
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PaymentDisruption</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paymentDisruptionType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paymentDisruptionType)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.paymentDisruptionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

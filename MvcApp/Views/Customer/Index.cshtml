@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MvcApp.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Header = "Customer";
+}
+ @if(ViewBag.RoleName=="Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if(ViewBag.RoleName=="Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+
+  
+<div class="container1" style="width: 660px;float:right;">
+
+
+<h2>Index Page for Customer</h2>
+
+<p>
+    @Html.ActionLink("Create New Customer", "Create")
+</p>
+<table class="table table-bordered" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.alphabeticId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerGroup.groupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.alphabeticId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerGroup.groupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+       
+        
+    </tr>
+}
+
+</table>
+    </div>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/next.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/themes/base/images")
+
+   
+  
+
+</head>
+
+
+           
+    <body>
+
+        <div class="wrapper">
+            <div class="navbar navbar-inverse navbar-static">
+                <div class="navbar-inner">
+                    <div class="container" style="width: 1100px;">
+
+                        @if (@ViewBag.header != "Home" && Session["userId"] == null)
+                        {
+                            <a class="brand" href=@Url.Action("Index", "Home")>Home</a>
+                        }
+                        else if (Session["userId"] != null && ViewBag.header == "Admin")
+                        {
+                            <a class="brand" href=@Url.Action("Index", "Admin")>Home</a>
+                          
+                        }
+                        else if (Session["userId"] != null && ViewBag.header == "Employee")
+                        {
+                            <a class="brand" href=@Url.Action("Index", "Employee")>Home</a>
+                          
+                        }
+
+                        else if (Session["userId"] != null && ViewBag.header == "Customer")
+                        {
+                            <a class="brand" href=@Url.Action("Index", "CustomerSite")>Home</a>
+                          
+                        }
+                        else if (Session["userId"] != null && ViewBag.header == "User")
+                        {
+                            <a class="brand" href=@Url.Action("Index", "User")>Home</a>
+                          
+                        }
+                        else
+                        {
+                            @ViewBag.errorMsg
+                        }
+
+
+                        @if (@ViewBag.header != null)
+                        {
+                            <h3 class="span2> offset5"style="color:#FFFFFF">@ViewBag.header</h3>
+                        }
+                        @if (Session["userId"] != null&& @ViewBag.header!="LogIn" &&@ViewBag.header!="Home")
+                        {
+                    
+                            <a class="btn btn-inverse btn-mini pull-right " href="@Url.Action("Logout", "Session")">Log out</a>
+                            <a class="pull-right" style="position:relative; top:8px; right:12px; color:grey" href="@Url.Action("Details", "User", new { id = Session["userId"] })">Hi  @Session["userName"]!, You Have Log In As @Session["RoleName"]</a>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+            
+            @* <div class="jumbotron" style="height: 50px">
+            <h3 class="shadowed">
+                @ViewBag.header</h3>
+        </div>*@
+
+            <div class="container" style="width: 1100px;">
+                @RenderBody()
+            </div>
+
+
+            <div class="push">
+            </div>
+
+        </div>
+       
+
+
+        <div class="footer">
+            <center>
+            <p style="font-family: myFirstFont; font-size: larger; margin-top: 10px;">
+                THE BOYS © 2013
+            </p>
+            </center>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+
+    </body>
+
+</html>

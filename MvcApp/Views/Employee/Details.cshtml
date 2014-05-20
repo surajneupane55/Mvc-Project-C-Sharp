@@ -1,0 +1,57 @@
+﻿@model MvcApp.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Employee";
+}
+@if(ViewBag.RoleName=="Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if(ViewBag.RoleName=="Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+<div class="container1" style="width: 660px;float:right;">
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Employee</legend>
+     <table class="table table-bordered">
+        <tr><th>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.userName)
+    </div></th></tr>
+             <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.userName)
+    </div></td></tr>
+                  <th>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div></th>
+                       <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div></td></tr>
+                            <th>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.surName)
+    </div></th>
+                                 <tr><td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.surName)
+    </div></td></tr></table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.employeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    </div>

@@ -1,0 +1,82 @@
+﻿@model MvcApp.Models.CustomerSite
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>CustomerSite</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Customer.alphabeticId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Customer.alphabeticId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.alphabeticId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.alphabeticId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.siteName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.siteName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dateOfLastSale)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dateOfLastSale)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.salesAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.salesAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WayOfDelivery.deliveryText)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WayOfDelivery.deliveryText)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.markOfDeletion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.markOfDeletion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaymentDisruption.paymentDisruptionType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaymentDisruption.paymentDisruptionType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sales)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sales)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,29 @@
+﻿@model MvcApp.Models.CustomerGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CustomerGroup</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.groupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.groupName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.groupDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.groupDescription)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.customerGroupId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

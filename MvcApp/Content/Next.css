@@ -1,0 +1,376 @@
+﻿
+@font-face
+{
+font-family: myFirstFont;
+src: url(../css/Sansation_Light.ttf),
+    url(../css/Sansation_Light.eot); /* IE9+ */
+}
+h2.shadowed 
+{
+     color:#140718;
+}
+h3.shadowed
+{
+    color: #FFFFFF;
+    font-family:Segoe UI;
+}
+.hero-unitmodified {
+  padding:0px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+          
+}
+
+#overlay
+{
+    display:none;
+    z-index: 50;
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+#overlay-content
+{
+    display:none;
+    position: absolute;
+    z-index: 55;
+    left:50%;
+    margin-left: -235px;
+    width: 470px;
+    min-height: 200px;
+    margin-top: 100px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 5px 5px 5px 5px;
+}
+#overlay-loading
+{
+    display:none;
+    position: absolute;
+    z-index: 60;
+    left:50%;
+    top:50%;
+    margin-left:-100px;
+    width: 200px;
+    min-height: 100px;
+    
+}
+
+#mainBody
+{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#backlogItemsDiv
+{
+    width: 330px;
+    float: left;
+}
+#sprintBacklogDiv
+{
+    width: 630px;
+    float: left;
+}
+#backloghead
+{
+    width: 316px;
+    height: 30px;
+    float: left;
+}
+#BLheading
+{
+    background-color: #2E5174;
+    color: white;
+    height: 28px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #3F7DC0;
+    width: 180px;
+    float: left;
+}
+
+#BLbutton
+{
+    width: 130px;
+    float: right;
+    position:relative;
+    left:10px;
+}
+#backlogBody
+{
+    border-radius: 0px 5px 5px 5px;
+    border: 1px solid #3F7DC0;
+    width: 316px;
+    float: left;
+    overflow: auto;
+    overflow-x: hidden;
+    background-color: #83A2C4;
+    box-shadow: 1px 1px white;
+}
+
+#sprintbackloghead
+{
+    width: 628px;
+    height: 30px;
+    float: left;
+}
+#SBLheading
+{
+    width: 250px;
+    float: left;
+}
+#SBLbutton
+{
+    width: 110px;
+    float: right;
+}
+#sprintbacklogBody
+{
+    width: 628px;
+    float: left;
+}
+
+.sprintContainer
+{
+    margin-bottom: 1em;
+    width: 626px;
+    float: left;
+}
+.verticalTag
+{
+    background-color: #2E5174;
+    border-radius: 5px 0px 0px 5px;
+    border-top: 1px solid #3F7DC0;
+    border-right: 0px;
+    border-bottom: 1px solid #3F7DC0;
+    border-left: 1px solid #3F7DC0;
+    width: 25px;
+    height: 110px;
+    float: left;
+}
+#verticalTag:hover
+{
+    background-color: #1260B4;
+}
+.columnContainerBody
+{
+    border-radius: 0px 5px 5px 5px;
+    border: 1px solid #3F7DC0;
+    min-height: 150px;
+    float: left;
+    background-color: #83A2C4;
+}
+
+.sprintsHeaderDiv
+{
+    background-color: #2E5174;
+    border-bottom: 1px solid #3F7DC0;
+    width: 590px;
+}
+
+.portlet-label
+{
+    margin-left: 20px;
+}
+.icons-set
+{
+    float: right;
+    margin-right: 5px;
+}
+.jumbotron
+{
+    position: relative;
+    top: -18px;
+    margin-bottom: 10px;
+    z-index: -1;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    background: #020031; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #03396B 0%, #5C95DD 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#03396B), color-stop(100%,#5C95DD)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg,  #03396B 0%,#5C95DD 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg,  #03396B 0%,#5C95DD 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg,  #03396B 0%,#5C95DD 100%); /* IE10+ */
+    background: linear-gradient(45deg,  #03396B 0%,#6d3353 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03396B', endColorstr='#5C95DD',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+    -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+    box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+.jumbotron:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+    opacity: 1;
+}
+#projectlistDiv
+{width:480px;
+ float:left;
+    
+    }
+ #userListDiv
+{width:480px;
+    float:left;
+    }
+body
+{
+    background: url(../img/pattern-1.png) repeat center center;
+}
+.portlet-header:hover
+{
+    cursor: move;
+}
+
+.backlogColumn
+{
+    width: 300px;
+    float: left;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+.sprintBacklogColumn
+{
+    width: 590px;
+    float: left;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+.portlet
+{
+    background-color: #EBEEF0;
+font-family: segoe ui;
+    width: 275px;
+    float: left;
+    margin: 0 .5em .5em 0.5em;
+    border-radius: 0px 0px 3px 3px;
+}
+.task-portlet
+{
+    background-color: #EBEEF0;
+font-family: segoe ui;
+    width: 300px;
+    float: left;
+    margin: 0 .5em .5em 0.5em;
+    border-radius:7px 0px 7px;
+}
+.portlet-header
+{
+    background-color: #868AA0;
+    margin: 0.3em;
+    padding-bottom: 4px;
+    padding-left: 0.2em;
+}
+.task-portlet-header
+{
+    background-color: #879BB4;
+    margin: 0.3em;
+    padding-bottom: 4px;
+    padding-left: 0.2em;
+}
+.portlet-header .ui-icon
+{
+    float: right;
+}
+.portlet-content
+{
+    padding: 0.4em;
+}
+.task-portlet-content
+{
+    padding: 0.4em;
+}
+.ui-sortable-placeholder
+{
+    border: 1px dotted black;
+    visibility: visible !important;
+    height: 50px !important;
+}
+.ui-sortable-placeholder *
+{
+    visibility: hidden;
+}
+html, body
+{
+    height: 100%; /* The html and body elements cannot have any padding or margin. */
+}
+.wrapper
+{
+    
+  
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+    background-color:#C0C0C0;
+}
+.footer, .push
+{
+    height: 4em;
+}
+
+.footer
+{
+    padding-top:10px;
+    background-color: #E3E2EB;
+}
+#popUp
+{
+    position: relative;
+    top: 10px;
+    left: 100px;
+}
+
+a.brand
+{
+    text-shadow: 1px 1px white, -1px -1px #444;
+}
+.verticle
+{
+    color: white;
+    display: block;
+    position: relative;
+    top: 60px;
+    left: 0px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -o-transform: rotate(-90deg);
+    font-size: large;
+    font-weight: bold;
+}
+#verticalChart
+{
+    display: block;
+    position: relative;
+    top: 0px;
+    left: 220px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -o-transform: rotate(-90deg);
+    font-size: large;
+    font-weight: bold;
+    }

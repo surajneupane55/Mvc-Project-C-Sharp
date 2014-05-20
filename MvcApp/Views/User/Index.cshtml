@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MvcApp.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Header = "User";
+}
+@if(ViewBag.RoleName=="Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if(ViewBag.RoleName=="Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+<div class="container1" style="width: 660px;float:right;">
+<h2>Index Page for User</h2>
+
+<p>
+    @Html.ActionLink("Create New USER", "Create")
+</p>
+    <table class="table table-bordered" >
+    <tr>
+        <th>
+
+            @Html.DisplayNameFor(model => model.Role.roleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passWord)
+        </th>
+       
+        
+    </tr>
+        </table>
+     <table class="table table-bordered" > <tr>
+
+@foreach (var item in Model) 
+   
+       { <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.roleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passWord)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.userId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.userId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.userId })
+        </td>
+    </tr>
+         
+}
+
+</table>
+    </div>

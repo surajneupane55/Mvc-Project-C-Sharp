@@ -1,0 +1,163 @@
+﻿@model MvcApp.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Customer";
+}
+@if(ViewBag.RoleName=="Admin")
+{
+<div>
+       @Html.Partial("_adminsidebar")
+</div>
+}
+else if(ViewBag.RoleName=="Employee")
+{
+    <div>
+       @Html.Partial("_employeesidebar")
+</div>
+}
+<h2>Details</h2>
+<div class="container1" style="width: 660px;float:right;">
+
+
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.userName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.userName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.alphabeticId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.alphabeticId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CustomerGroup.groupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CustomerGroup.groupName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.customerName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.customerName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StreetAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StreetAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ZipCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ZipCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.city)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.city)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.country)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.country)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ispostaladdsame)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ispostaladdsame)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.postalStreetAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.postalStreetAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.postalZipCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.postalZipCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.postalcity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.postalcity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.contactpersonName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.contactpersonName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.emailAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.emailAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phoneNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phoneNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.creditLimit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.creditLimit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.discountRate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.discountRate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createcustomersite)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createcustomersite)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.customerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    </div>
